@@ -8,6 +8,13 @@ class AnnoyingExApp(): Application() {
     lateinit var apiManager: ApiManager
         private set
 
+    lateinit var annoyingExNotificationManager: AnnoyingExNotificationManager
+        private set
+
+    lateinit var annoyingExWorkerManager: AnnoyingExWorkerManager
+        private set
+
+    // Store messages in application instance
     var messageList = listOf<String>()
         private set
 
@@ -19,5 +26,7 @@ class AnnoyingExApp(): Application() {
         }, {
             Toast.makeText(applicationContext, "Could not fetch messages...", Toast.LENGTH_SHORT).show()
         })
+        annoyingExWorkerManager = AnnoyingExWorkerManager(this)
+        annoyingExNotificationManager = AnnoyingExNotificationManager(this)
     }
 }
